@@ -34,6 +34,9 @@ import com.dji.sdk.sample.internal.utils.GeneralUtils;
 import com.dji.sdk.sample.internal.utils.ToastUtils;
 import com.squareup.otto.Subscribe;
 
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
+
 import java.util.ArrayList;
 import java.util.List;
 import java.util.concurrent.atomic.AtomicBoolean;
@@ -64,6 +67,8 @@ import dji.sdk.useraccount.UserAccountManager;
  * Created by dji on 15/12/18.
  */
 public class MainContent extends RelativeLayout {
+
+    private static final Logger log = LoggerFactory.getLogger(MainContent.class);
 
     public static final String TAG = MainContent.class.getName();
     private static final String[] REQUIRED_PERMISSION_LIST = new String[] {
@@ -357,12 +362,12 @@ public class MainContent extends RelativeLayout {
                 if (aircraft.getRemoteController() != null && aircraft.getRemoteController().isConnected()) {
                     mTextConnectionStatus.setText(R.string.connection_only_rc);
                     mTextProduct.setText(R.string.product_information);
-                    mBtnOpen.setEnabled(false);
+                    //mBtnOpen.setEnabled(false);
                     mTextModelAvailable.setText("Firmware version:N/A");
                 }
             }
         } else {
-            mBtnOpen.setEnabled(false);
+            //mBtnOpen.setEnabled(false);
             mTextProduct.setText(R.string.product_information);
             mTextConnectionStatus.setText(R.string.connection_loose);
             mTextModelAvailable.setText("Firmware version:N/A");

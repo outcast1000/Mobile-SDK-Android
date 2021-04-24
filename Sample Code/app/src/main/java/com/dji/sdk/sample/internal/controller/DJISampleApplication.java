@@ -5,6 +5,8 @@ import android.content.Context;
 
 import androidx.multidex.MultiDex;
 
+import com.bugfender.sdk.Bugfender;
+import com.dji.sdk.sample.BuildConfig;
 import com.squareup.otto.Bus;
 import com.squareup.otto.ThreadEnforcer;
 
@@ -77,5 +79,17 @@ public class DJISampleApplication extends Application {
         MultiDex.install(this);
         com.secneo.sdk.Helper.install(this);
         app = this;
+        Bugfender.d("DJISampleApplication", "attachBaseContext");
+
+    }
+
+    @Override
+    public void onCreate() {
+        super.onCreate();
+
+        Bugfender.init(this, "h82hbWPB6BD3cKHT6zflrqKvHhXewKak", BuildConfig.DEBUG);
+        Bugfender.enableCrashReporting();
+        Bugfender.enableUIEventLogging(this);
+        //Bugfender.enableLogcatLogging(); // optional, if you want logs automatically collected from logcat
     }
 }

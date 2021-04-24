@@ -117,3 +117,8 @@
 -keep class dji.sdk.utmiss.** { *; }
 -keep class utmisslib.** { *; }
 #<------------ utmiss config end------------>
+
+
+-dontwarn ch.qos.logback.**
+-keep class  ch.qos.logback.** { *; }
+-keep interface ch.qos.logback.** { *; }
